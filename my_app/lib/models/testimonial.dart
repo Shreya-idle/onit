@@ -1,4 +1,4 @@
-/// Model representing a user testimonial.
+
 class Testimonial {
   final String name;
   final String role;
@@ -9,4 +9,13 @@ class Testimonial {
     required this.role,
     required this.content,
   });
+
+  factory Testimonial.fromJson(Map<String, dynamic> json) {
+    return Testimonial(
+      name: json['name'] ?? '',
+      role: json['role'] ?? '',
+      content: json['content'] ?? '',
+    );
+  }
 }
+

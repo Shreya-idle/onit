@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 
-/// Address header with location pin icon.
+
 class AddressHeader extends StatelessWidget {
-  const AddressHeader({super.key});
+  final String address;
+  const AddressHeader({super.key, required this.address});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class AddressHeader extends StatelessWidget {
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                 Text(
-                  'Hno. - 17-1-391/v/19/A, Saraswathi nag...',
+                  address,
                   style:
                       TextStyle(color: AppColors.textSecondary, fontSize: 11),
                   maxLines: 1,
@@ -37,7 +38,6 @@ class AddressHeader extends StatelessWidget {
   }
 }
 
-/// Custom search bar matching the OnIT design.
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({super.key});
 
@@ -92,7 +92,6 @@ class SearchBarWidget extends StatelessWidget {
   }
 }
 
-/// Welcome hero banner with greeting and CTA.
 class HeroBanner extends StatelessWidget {
   const HeroBanner({super.key});
 
@@ -118,7 +117,6 @@ class HeroBanner extends StatelessWidget {
   }
 }
 
-/// Task posting feature banner.
 class FeaturedBanner extends StatelessWidget {
   const FeaturedBanner({super.key});
 
@@ -210,7 +208,6 @@ class FeaturedBanner extends StatelessWidget {
   }
 }
 
-/// Row of promotional offer cards.
 class PromoRow extends StatelessWidget {
   const PromoRow({super.key});
 
@@ -274,20 +271,17 @@ class _PromoCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Icon on the left
           CircleAvatar(
             radius: 20,
             backgroundColor: AppColors.primaryGreen,
             child: Icon(icon, color: Colors.white, size: 18),
           ),
           const SizedBox(width: 10),
-          // Text block: topLabel → title → subtitle
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Top label — grey muted text
                 Text(
                   topLabel,
                   style: const TextStyle(
@@ -298,7 +292,6 @@ class _PromoCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                // Main title — bold & large
                 Text(
                   title,
                   style: const TextStyle(
@@ -309,7 +302,6 @@ class _PromoCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 3),
-                // Bottom subtitle — muted description
                 Text(
                   subtitle,
                   style: const TextStyle(
@@ -322,7 +314,6 @@ class _PromoCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          // Accept button — adjacent to the text column
           GestureDetector(
             onTap: () {},
             child: Container(
@@ -347,7 +338,6 @@ class _PromoCard extends StatelessWidget {
   }
 }
 
-/// Section title with "View more" link.
 class SectionTitle extends StatelessWidget {
   final String title;
   const SectionTitle({super.key, required this.title});
@@ -376,7 +366,6 @@ class SectionTitle extends StatelessWidget {
   }
 }
 
-/// Task template card widget.
 class TaskTemplateCard extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -432,7 +421,6 @@ class TaskTemplateCard extends StatelessWidget {
   }
 }
 
-/// Top performer card widget.
 class PerformerCard extends StatelessWidget {
   final String name;
   final String role;
@@ -536,7 +524,6 @@ class PerformerCard extends StatelessWidget {
   }
 }
 
-/// Testimonial card with green oval background and white card overlay.
 class TestimonialCard extends StatelessWidget {
   final String name;
   final String role;
@@ -557,7 +544,6 @@ class TestimonialCard extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // Green oval background
           Positioned(
             left: 0,
             top: 20,
@@ -570,7 +556,6 @@ class TestimonialCard extends StatelessWidget {
               ),
             ),
           ),
-          // White card overlaid on the green oval
           Positioned(
             right: 0,
             top: 30,
@@ -595,7 +580,6 @@ class TestimonialCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Profile row
                   Row(
                     children: [
                       CircleAvatar(
@@ -624,7 +608,6 @@ class TestimonialCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  // Testimonial content
                   Text(
                     content,
                     style: TextStyle(
@@ -644,7 +627,6 @@ class TestimonialCard extends StatelessWidget {
   }
 }
 
-/// Rewards / Referral section.
 class RewardSection extends StatelessWidget {
   const RewardSection({super.key});
 
@@ -705,7 +687,6 @@ class RewardSection extends StatelessWidget {
   }
 }
 
-/// Footer branding section.
 class FooterBrand extends StatelessWidget {
   const FooterBrand({super.key});
 

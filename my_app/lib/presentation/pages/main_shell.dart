@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
-import '../../pages/client_page.dart';
+import 'client_page.dart';
 import 'home_page.dart';
+import 'my_tasks_page.dart';
+import 'post_task_page.dart';
 
-/// Main shell with bottom navigation bar.
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
@@ -14,20 +15,20 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    HomePage(),
-    _PlaceholderPage(title: 'My Task'),
-    _PlaceholderPage(title: 'Post'),
-    _PlaceholderPage(title: 'Chat'),
-    ClientPage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      const HomePage(),
+      const MyTasksPage(),
+      const PostTaskPage(),
+      const _PlaceholderPage(title: 'Chat'),
+      const ClientPage(clientId: "1"), 
+    ];
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _pages,
+        children: pages,
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
@@ -41,6 +42,9 @@ class _MainShellState extends State<MainShell> {
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: AppColors.primaryGreen,
+          unselectedItemColor: AppColors.textSecondary,
           onTap: (index) => setState(() => _currentIndex = index),
           items: [
             const BottomNavigationBarItem(
@@ -51,18 +55,11 @@ class _MainShellState extends State<MainShell> {
             const BottomNavigationBarItem(
               icon: Icon(Icons.assignment_outlined),
               activeIcon: Icon(Icons.assignment),
-              label: 'My Task',
+              label: 'Task',
             ),
-            BottomNavigationBarItem(
-              icon: Container(
-                width: 48,
-                height: 48,
-                decoration: const BoxDecoration(
-                  color: AppColors.primaryGreen,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(Icons.add, color: Colors.white, size: 28),
-              ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline, color: AppColors.primaryGreen, size: 32),
+              activeIcon: Icon(Icons.add_circle, color: AppColors.primaryGreen, size: 32),
               label: 'Post',
             ),
             const BottomNavigationBarItem(
@@ -82,7 +79,6 @@ class _MainShellState extends State<MainShell> {
   }
 }
 
-/// Placeholder page for tabs not yet implemented.
 class _PlaceholderPage extends StatelessWidget {
   final String title;
   const _PlaceholderPage({required this.title});

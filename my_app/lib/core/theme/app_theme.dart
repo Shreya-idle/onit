@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
-/// Centralized app theme following the design system.
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
