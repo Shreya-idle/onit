@@ -100,7 +100,6 @@ class _TaskDetailsPageState extends State<TaskDetailsPage> {
                         final nextStatus =
                             task.status == 'open' ? 'in_progress' : 'completed';
                         await viewModel.updateStatus(task.id, nextStatus);
-                        // Re-fetch to update current view
                         viewModel.fetchTaskDetails(task.id);
                       },
                       style: ElevatedButton.styleFrom(
